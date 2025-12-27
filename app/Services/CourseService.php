@@ -57,8 +57,9 @@ class CourseService
         // return $courses->groupBy(function ($course) {
         //     return $course->is_active ? 'activos' : 'inactivos';
         // });
-        return $courses->groupBy(fn ($course)=> 
-           $course->is_active ? 'activos' : 'inactivos'
+        return $courses->groupBy(
+            fn($course) =>
+            $course->is_active ? 'activos' : 'inactivos'
         )->map(function ($group) {
             return $group->map(function ($course) {
                 return [
@@ -66,10 +67,15 @@ class CourseService
                     'title' => $course->title,
                     'year'  => $course->year_uploaded,
                     'price' => $course->price,
-                    'active'=> $course->is_active,
-            ];
+                    'active' => $course->is_active,
+                ];
             });
-             });
+        });
+        //------------EJEMPLO DE COMO USAR GROUPBY CON OPERADOR TERNARIO----------------
+        // return $courses->groupBy(function ($course) {
+        //     return $course->year_uploaded == 2010 ? 'de 2010' : 'no son de 2010';
+        //     return $course->year_uploaded !== null ? 'tienen año' : 'sin año';
+        // });
     }
 
     public function getCourseWithLessons(int $id)
