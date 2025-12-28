@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+//tebgi miedo
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Mongo\Course as coursePublic;
 
